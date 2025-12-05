@@ -1,0 +1,365 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #27ae60; /* Green header */
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a.active {
+  border-bottom: 2px solid white;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+  background: url('images/open-book-glow.jpg') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 6em 2em;
+}
+
+.hero-text h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.3em;
+}
+
+.hero-text h3 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 1.5em;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+}
+
+.btn.secondary {
+  background-color: white;
+  color: #27ae60;
+  border: 2px solid #27ae60;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ecf0f1;
+  padding: 2em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.stats div strong {
+  font-size: 1.5em;
+  color: #27ae60;
+}
+
+/* Collections */
+.collections {
+  padding: 2em;
+}
+
+.collections h3 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.collections h4 {
+  margin-top: 1em;
+  color: #2c3e50;
+}
+
+.collections ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5em 0;
+}
+
+.collections li {
+  margin: 0.3em 0;
+}
+
+/* Footer */
+footer {
+  background-color: #27ae60; /* Green footer */
+  color: white;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2em;
+}
+
+.footer-links h5 {
+  margin-bottom: 0.5em;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.newsletter {
+  margin-top: 1em;
+}
+
+.newsletter input {
+  padding: 0.5em;
+  margin-right: 0.5em;
+  border-radius: 4px;
+  border: none;
+}
+
+.newsletter button {
+  padding: 0.5em 1em;
+  background-color: white;
+  color: #27ae60;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.footer-copy {
+  margin-top: 1em;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9em;
+}
+
+/* Responsive Design */
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #27ae60;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1em;
+    border-radius: 4px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+/* Ensure footer sticks to bottom */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto; /* pushes footer to bottom */
+  background-color: #27ae60; /* green footer */
+  color: white;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  text-align: center;
+}
+
+/* Social Media Icons */
+.social {
+  display: flex;
+  gap: 1em;
+}
+
+.social a {
+  color: white;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.social a:hover {
+  color: #ecf0f1;
+}
+
+.about-banner {
+  text-align: center;
+  background-color: rgba(39, 174, 96, 0.8);
+  color: white;
+  padding: 3em 2em;
+}
+
+.about-banner h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.about-banner p {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.story-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 3em 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-text {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+.story-text h3 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  color: #2c3e50;
+}
+
+.story-text p {
+  margin-bottom: 1em;
+}
+
+.story-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.features-section {
+  text-align: center;
+  padding: 3em 2em;
+  background-color: #ecf0f1;
+}
+
+.features-section h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2em;
+  width: 250px;
+  text-align: center;
+}
+
+.card i {
+  font-size: 2em;
+  color: #27ae60;
+  margin-bottom: 0.5em;
+}
+
+.card h4 {
+  margin-bottom: 0.5em;
+  color: #2c3e50;
+}
+
+.card p {
+  font-size: 0.95em;
+  color: #555;
+}

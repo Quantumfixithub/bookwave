@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookwave - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Segoe UI, sans-serif;
+      background: #fdfdfd;
+      color: #333;
+    }
+
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 { font-size: 1.5em; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+      margin: 0;
+      padding: 0;
+    }
+    nav a { color: white; text-decoration: none; }
+    nav a.active { border-bottom: 2px solid white; }
+
+    .hero {
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_X4bD6ialWuEg8cX1x6WPjyKjlbp_mOzh1g&s') center center / cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 6em 2em;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(39, 174, 96, 0.85); /* green overlay */
+  z-index: 0;
+}
+
+.hero * {
+  position: relative;
+  z-index: 1;
+}
+
+    .hero h2 { font-size: 2.5em; margin-bottom: 0.3em; }
+    .hero h3 { font-size: 1.5em; margin-bottom: 1em; }
+    .hero p {
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto 2em;
+    }
+    .hero-buttons a {
+      padding: 0.8em 1.5em;
+      margin: 0 0.5em;
+      border-radius: 4px;
+      font-size: 1em;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn.primary { background: #27ae60; color: white; }
+    .btn.secondary { background: #ccc; color: #333; }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 3em;
+      padding: 2em;
+      background: #ffffff;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .collections { padding: 3em 2em; background: #f9f9f9; }
+    .collections h3 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
+
+    /* Carousel Styles */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 1000px;
+      margin: 2em auto;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .slide {
+      min-width: 200px;
+      margin: 0 1em;
+      text-align: center;
+    }
+    .slide img {
+      width: 180px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .carousel button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .carousel .prev { left: 0; }
+    .carousel .next { right: 0; }
+
+    footer {
+      background: #27ae60;
+      color: white;
+      padding: 3em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3em;
+      flex: 1 1 300px;
+    }
+    .footer-links h5 { margin-bottom: 0.5em; }
+    .footer-links ul { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 0.3em; }
+    .footer-links a { color: white; text-decoration: none; }
+ footer {
+      background:#27ae60;
+      color:white;
+      padding:3em 2em;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    footer h4 { margin-bottom:0.5em; }
+    footer ul { list-style:none; padding:0; }
+    footer ul li { margin-bottom:0.3em; }
+    footer a { color:white; text-decoration:none; }
+    .newsletter {
+      flex: 1 1 300px;
+      margin-top: 2em;
+    }
+    .newsletter h5 { margin-bottom: 0.5em; }
+    .newsletter input {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      margin-right: 0.5em;
+    }
+    .newsletter button {
+      padding: 0.5em 1em;
+      background: white;
+      color: #27ae60;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .social {
+      width: 100%;
+      text-align: center;
+      margin-top: 2em;
+    }
+    .social a {
+      margin: 0 0.5em;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
+    .footer-copy {
+      text-align: center;
+      margin-top: 1em;
+      font-size: 0.9em;
+    }
+
+    .hamburger { display: none; }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #27ae60;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1em;
+        border-radius: 8px;
+      }
+      nav ul.show { display: flex; }
+      .hamburger { display: block; cursor: pointer; }
+      .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="logo">Bookwave</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="donation.html">Donation</a></li>
+        <li><a href="library.html">Library</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Launching Soon</h2>
+    <h3>Discover Your Next Great Read</h3>
+    <p>Join us in launching the ultimate digital library. Support our mission to make reading accessible to everyone, everywhere.</p>
+ 
+     <div class="hero-buttons">
+      <a href="donation.html" class="btn primary">Support the Launch</a>
+      <a href="library.html" class="btn secondary">Explore Library</a>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats" aria-label="Platform statistics">
+    <div><strong>100K+</strong><br>Books Reviewed</div>
+    <div><strong>5.0M+</strong><br>Reviews Shared</div>
+    <div><strong>4.8/5</strong><br>Avg. Rating</div>
+  </section>
+
+  <!-- Collections Carousel -->
+  <section class="collections">
+    <h3>Featured Collections</h3>
+    <div class="carousel">
+      <button class="prev">&#10094;</button>
+      <div class="carousel-track">
+        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg94zRTcNOsNVGgb_dSHJQINfMMHn2lsZ4mw&s" alt="The Midnight Library" /><p>The Midnight Library – Matt Haig</p></div>
+        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd34WheocuQmi2mkx0_50dmd3Eg6YShTuLYQ&s" alt="Project Hail Mary" /><p>Project Hail Mary – Andy Weir</p></div>
+        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwKlcNLyHUgTwW3pkt9CqjWRtKK84i8Y7jyw&s" alt="Malibu Rising" /><p>Malibu Rising – Taylor Jenkins Reid</p></div>
+        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FQk_SzsEpthTOwnx_R9tM348IXFH0jvccw&s" alt="Atomic Habits" /><p>Atomic Habits – James Clear</p></div>
+        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1724dV6HARfCCQTSp4luZ3mOWu67olv_vRQ&s" alt="Becoming" /><p>Becoming – Michelle Obama</p></div>
+      </div>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+<footer>
+    <div style="flex:1 1 200px;">
+      <h4>Bookwave</h4>
+      <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
+    </div>
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+               <li><a href="about.html">About</a></li>
+        <li><a href="donation.html">Donation</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 250px; text-align:center;">
+      <h4>Stay Connected</h4>
+      <p>Get the latest updates delivered to your inbox.</p>
+      <form action="#" method="post" style="margin-top:0.5em;">
+        <input type="email" placeholder="Enter your email" required
+          style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
+        <button type="submit"
+          style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
+          Subscribe Now
+        </button>
+      </form>
+    </div>
+
+    <div style="width:100%; text-align:center; margin-top:2em;">
+      <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
+        <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
+      </div>
+      <p style="font-size:0.9em;">&copy; 2025 Bookwave. Happy Reading!</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Carousel functionality with auto-scroll
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    let currentIndex = 0;
+    let autoScroll;
+
+    function updateCarousel() {
+      const slideWidth = slides[0].getBoundingClientRect().width + 20;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    function startAutoScroll() {
+      autoScroll = setInterval(() => {
+        if (currentIndex < slides.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      }, 3000); // every 3 seconds
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScroll);
+    }
+
+    nextButton.addEventListener('click', () => {
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = slides.length - 1;
+      }
+      updateCarousel();
+    });
+
+    // Start auto-scroll and pause on hover
+    startAutoScroll();
+    track.addEventListener('mouseenter', stopAutoScroll);
+    track.addEventListener('mouseleave', startAutoScroll);
+  </script>
+
+</body>
+</html>

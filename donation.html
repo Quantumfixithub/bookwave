@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookwave - Donation</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <style>
+    body {
+      font-family: Segoe UI, sans-serif;
+      background: #f4fdf6;
+      margin: 0;
+      color: #333;
+    }
+
+    header {
+      background: #27ae60;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3em 2em;
+      background: #eafaf0;
+    }
+
+    .hero h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .hero p {
+      font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto 2em;
+    }
+
+    .donation-form {
+      text-align: center;
+      padding: 3em 2em;
+      background: #ffffff;
+    }
+
+    .donation-form h3 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.7em;
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 0.7em 1.5em;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #27ae60;
+      color: white;
+      padding: 3em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3em;
+      flex: 1 1 300px;
+    }
+    .footer-links h5 { margin-bottom: 0.5em; }
+    .footer-links ul { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 0.3em; }
+    .footer-links a { color: white; text-decoration: none; }
+ footer {
+      background:#27ae60;
+      color:white;
+      padding:3em 2em;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+    }
+    footer h4 { margin-bottom:0.5em; }
+    footer ul { list-style:none; padding:0; }
+    footer ul li { margin-bottom:0.3em; }
+    footer a { color:white; text-decoration:none; }
+    .newsletter {
+      flex: 1 1 300px;
+      margin-top: 2em;
+    }
+    .newsletter h5 { margin-bottom: 0.5em; }
+    .newsletter input {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      margin-right: 0.5em;
+    }
+    .newsletter button {
+      padding: 0.5em 1em;
+      background: white;
+      color: #27ae60;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .social {
+      width: 100%;
+      text-align: center;
+      margin-top: 2em;
+    }
+    .social a {
+      margin: 0 0.5em;
+      color: white;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
+    .footer-copy {
+      text-align: center;
+      margin-top: 1em;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bookwave</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="donation.html">Donation</a></li>
+        <li><a href="library.html">Library</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Help Us Grow the Library</h2>
+    <p>Your donation helps us expand our collection, improve our platform, and make reading accessible to everyone.</p>
+  </section>
+
+  <section class="donation-form">
+    <h3>Make a Monetary Donation</h3>
+    <form id="donationForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" required />
+
+      <label for="amount">Donation Amount:</label>
+      <input type="number" id="amount" required />
+
+      <label for="currency">Currency:</label>
+      <select id="currency">
+        <option value="NGN">NGN - Nigerian Naira</option>
+        <option value="USD">USD - US Dollar</option>
+        <option value="GHS">GHS - Ghanaian Cedi</option>
+        <option value="ZAR">ZAR - South African Rand</option>
+      </select>
+
+      <label for="frequency">Donation Frequency:</label>
+      <select id="frequency">
+        <option value="one-time">One-Time</option>
+        <option value="monthly">Monthly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+
+      <button type="submit">Donate Now</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+<footer>
+    <div style="flex:1 1 200px;">
+      <h4>Bookwave</h4>
+      <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
+    </div>
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+               <li><a href="about.html">About</a></li>
+        <li><a href="donation.html">Donation</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 250px; text-align:center;">
+      <h4>Stay Connected</h4>
+      <p>Get the latest updates delivered to your inbox.</p>
+      <form action="#" method="post" style="margin-top:0.5em;">
+        <input type="email" placeholder="Enter your email" required
+          style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
+        <button type="submit"
+          style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
+          Subscribe Now
+        </button>
+      </form>
+    </div>
+
+    <div style="width:100%; text-align:center; margin-top:2em;">
+      <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
+        <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
+      </div>
+      <p style="font-size:0.9em;">&copy; 2025 Bookwave. Happy Reading!</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
+        email: document.getElementById('email').value,
+        amount: document.getElementById('amount').value * 100, // Convert to kobo
+        currency: document.getElementById('currency').value,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Name",
+              variable_name: "donor_name",
+              value: document.getElementById('name').value
+            },
+            {
+              display_name: "Frequency",
+              variable_name: "donation_frequency",
+              value: document.getElementById('frequency').value
+            }
+          ]
+        },
+        callback: function(response) {
+          alert('Thank you! Your donation was successful. Reference: ' + response.reference);
+        },
+        onClose: function() {
+          alert('Donation window closed.');
+        }
+      });
+
+      handler.openIframe();
+    });
+  </script>
+
+</body>
+</html>
