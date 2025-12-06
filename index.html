@@ -15,21 +15,25 @@
 
     /* Header */
     header {
-      background: #27ae60;
-      color: white;
-      padding: 1em 2em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background: #27ae60;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;   /* add this */
+  z-index: 1000;        /* ensure header/nav is above hero */
+}
     header h1 { font-size: 1.5em; }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5em;
-      margin: 0;
-      padding: 0;
-    }
+   nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+  position: relative;   /* add positioning */
+  z-index: 1000;        /* keep nav above hero image */
+}
     nav a { color: white; text-decoration: none; }
     nav a.active { border-bottom: 2px solid white; }
 
@@ -48,9 +52,10 @@
     right: 20px;
     padding: 1em;
     border-radius: 8px;
+    width: 200px;       /* give it width so it doesn’t collapse */
+    z-index: 1000;      /* make sure it stays above hero */
   }
   nav ul.show { display: flex; }
-  .hamburger { display: block; }
 }
     /* Hero Section */
     .hero {
@@ -315,6 +320,7 @@
 
 </body>
 </html>
+
 
 
 
