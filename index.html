@@ -33,25 +33,25 @@
     nav a { color: white; text-decoration: none; }
     nav a.active { border-bottom: 2px solid white; }
 
-    /* Mobile nav */
-    .hamburger { display: none; cursor: pointer; }
-    .hamburger span {
-      display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: #27ae60;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        padding: 1em;
-        border-radius: 8px;
-      }
-      nav ul.show { display: flex; }
-      .hamburger { display: block; }
-    }
+   /* Mobile nav */
+.hamburger { display: none; cursor: pointer; }
+.hamburger span {
+  display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
+}
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #27ae60;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 1em;
+    border-radius: 8px;
+  }
+  nav ul.show { display: flex; }
+  .hamburger { display: block; }
+}
 
     /* Hero Section */
     .hero {
@@ -315,3 +315,4 @@
 
 </body>
 </html>
+
