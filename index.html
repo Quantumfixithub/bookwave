@@ -271,64 +271,73 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script>
-   const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('nav ul');
 
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
+ <!-- JavaScript -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+
+  // Hamburger toggle
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // Dropdown toggle for mobile
+  const dropdownParents = document.querySelectorAll('nav ul > li > a');
+  dropdownParents.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        const dropdown = this.nextElementSibling;
+        if (dropdown && dropdown.classList.contains('dropdown')) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        }
+      }
     });
+  });
 
-    // Dropdown toggle for mobile
-    const dropdownParents = document.querySelectorAll('nav ul > li > a');
-    dropdownParents.forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          const dropdown = this.nextElementSibling;
-          if (dropdown && dropdown.classList.contains('dropdown')) {
-            e.preventDefault();
-            dropdown.classList.toggle('show');
-          }
+  // Carousel auto-scroll
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector('.next');
+  const prevButton = document.querySelector('.prev');
+  let currentIndex = 0;
+  let autoScroll;
 
-    // Carousel auto-scroll
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector('.next');
-    const prevButton = document.querySelector('.prev');
-    let currentIndex = 0;
-    let autoScroll;
+  function updateCarousel() {
+    const slideWidth = slides[0].getBoundingClientRect().width + 20;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
 
-    function updateCarousel() {
-      const slideWidth = slides[0].getBoundingClientRect().width + 20;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    function startAutoScroll() {
-      autoScroll = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-      }, 3000);
-    }
-
-    function stopAutoScroll() { clearInterval(autoScroll); }
-
-    nextButton.addEventListener('click', () => {
+  function startAutoScroll() {
+    autoScroll = setInterval(() => {
       currentIndex = (currentIndex + 1) % slides.length;
       updateCarousel();
-    });
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateCarousel();
-    });
+    }, 3000);
+  }
 
-    startAutoScroll();
-    track.addEventListener('mouseenter', stopAutoScroll);
-    track.addEventListener('mouseleave', startAutoScroll);
-  </script>
+  function stopAutoScroll() {
+    clearInterval(autoScroll);
+  }
+
+  nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  });
+
+  prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  startAutoScroll();
+  track.addEventListener('mouseenter', stopAutoScroll);
+  track.addEventListener('mouseleave', startAutoScroll);
+</script>
 
 </body>
 </html>
+
 
 
 
