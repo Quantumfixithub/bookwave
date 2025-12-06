@@ -36,34 +36,46 @@
     header nav a { color:white; text-decoration:none; }
     header nav a.active { border-bottom:2px solid white; }
 
-    /* Mobile nav */
-    .hamburger { display:none; cursor:pointer; }
-    .hamburger span {
-      display:block;
-      width:25px;
-      height:3px;
-      background:white;
-      margin:5px 0;
-    }
-    @media (max-width:768px) {
-      header nav ul {
-        display:none;
-        flex-direction:column;
-        background:#27ae60;
-        position:absolute;
-        top:60px;
-        right:0;
-        width:100%;
-        padding:1em;
-        z-index:1000;
-      }
-      header nav ul.show { display:flex; }
-      header nav ul li {
-        text-align:center;
-        padding:0.8em 0;
-      }
-      .hamburger { display:block; z-index:1100; }
-    }
+  /* Mobile nav */
+.hamburger { display:none; cursor:pointer; }
+.hamburger span {
+  display:block;
+  width:25px;
+  height:3px;
+  background:white;
+  margin:5px 0;
+}
+
+@media (max-width:768px) {
+  header nav ul {
+    display:none;
+    flex-direction:column;
+    background:#27ae60;   /* same green background */
+    position:absolute;
+    top:60px;
+    left:0;               /* full width dropdown */
+    width:100%;
+    text-align:center;
+    padding:0;
+    margin:0;
+    z-index:1000;
+  }
+  header nav ul.show { display:block; }
+  header nav ul li {
+    border-top:1px solid rgba(255,255,255,0.2);
+    padding:1em 0;
+  }
+  header nav ul li:first-child { border-top:none; }
+  header nav a {
+    display:block;
+    width:100%;
+    color:white;
+    text-decoration:none;
+    font-size:1.1em;
+  }
+  .hamburger { display:block; z-index:1100; }
+}
+
 
     /* Card Grid */
     .card-grid {
@@ -292,3 +304,4 @@
 
 </body>
 </html>
+
