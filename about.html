@@ -8,10 +8,11 @@
 <style>
 body {
   margin: 0;
-  font-family: Segoe UI, sans-serif;
+  font-family: Segoe UI, sans-serif;https://github.com/Quantumfixithub/bookwave/blob/main/about.html
   background: #fdfdfd;
   color: #333;
 }
+
 
 /* Header */
 header {
@@ -21,17 +22,54 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1000;
 }
-header h1 { font-size: 1.5em; }
-nav ul { list-style: none; display: flex; gap: 1.5em; margin: 0; padding: 0; }
-nav a { color: white; text-decoration: none; }
-nav a.active { border-bottom: 2px solid white; }
 
-/* Mobile nav */
-.hamburger { display: none; cursor: pointer; }
-.hamburger span {
-  display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
+header h1 { 
+  font-size: 1.5em; 
+  margin: 0;
 }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+}
+
+nav a { 
+  color: white; 
+  text-decoration: none;
+  transition: border 0.3s ease;
+}
+
+nav a:hover {
+  border-bottom: 2px solid white;
+}
+
+nav a.active { 
+  border-bottom: 2px solid white; 
+}
+ 
+/* Mobile nav */
+.hamburger { 
+  display: none; 
+  cursor: pointer; 
+}
+
+.hamburger span {
+  display: block; 
+  width: 25px; 
+  height: 3px; 
+  background: white; 
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
 @media (max-width: 768px) {
   nav ul {
     display: none;
@@ -42,6 +80,7 @@ nav a.active { border-bottom: 2px solid white; }
     right: 20px;
     padding: 1em;
     border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
   nav ul.show { display: flex; }
   .hamburger { display: block; }
@@ -194,18 +233,18 @@ footer a { color: white; text-decoration: none; }
 <body>
 
   <!-- Header -->
-  <header>
-    <h1>Impact Rebirth</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="donation.html">Donation</a></li>
-        <li><a href="library.html">Library</a></li>
-      </ul>
-    </nav>
-    <div class="hamburger"><span></span><span></span><span></span></div>
-  </header>
+<header>
+  <h1 class="logo">Impact Rebirth</h1>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="donation.html">Donation</a></li>
+      <li><a href="library.html">Library</a></li>
+    </ul>
+  </nav>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
 
   <!-- Vision -->
   <section class="hero-about">
@@ -339,6 +378,30 @@ footer a { color: white; text-decoration: none; }
       navMenu.classList.toggle('show');
     });
 
+const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+
+  // Hamburger toggle
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show');
+    }
+  });
+
+  // Set active page based on current URL
+  const currentPage = window.location.pathname.split('/').pop();
+  const navLinks = document.querySelectorAll('nav a');
+  
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
+  });
     // Dropdown toggle for mobile
     const dropdownParents = document.querySelectorAll('nav ul > li > a');
     dropdownParents.forEach(link => {
@@ -356,6 +419,7 @@ footer a { color: white; text-decoration: none; }
 
 </body>
 </html>
+
 
 
 
