@@ -36,7 +36,7 @@
     header nav a { color:white; text-decoration:none; }
     header nav a.active { border-bottom:2px solid white; }
 
-  /* Mobile nav */
+    /* Mobile nav */
     .hamburger { display:none; cursor:pointer; }
     .hamburger span {
       display:block;
@@ -64,6 +64,7 @@
       }
       .hamburger { display:block; z-index:1100; }
     }
+
     /* Card Grid */
     .card-grid {
       display:grid;
@@ -204,7 +205,7 @@
 
   <!-- Footer -->
   <footer>
-        <div style="flex:1 1 200px;">
+     <div style="flex:1 1 200px;">
       <h4>Bookwave</h4>
       <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
     </div>
@@ -255,27 +256,6 @@
 
   <!-- Filtering + Mobile Nav Script -->
   <script>
-     const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
-
-  // Hamburger toggle
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-  // Dropdown toggle for mobile
-  const dropdownParents = document.querySelectorAll('nav ul > li > a');
-  dropdownParents.forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        const dropdown = this.nextElementSibling;
-        if (dropdown && dropdown.classList.contains('dropdown')) {
-          e.preventDefault();
-          dropdown.classList.toggle('show');
-        }
-      }
-    });
-  });
     // Genre filtering
     const genreCards = document.querySelectorAll('#genreGrid .card');
     const bookCards = document.querySelectorAll('#bookGrid .card');
@@ -302,7 +282,7 @@
       });
     }
 
-    // Mobile nav toggle (uniform with Home page)
+    // Mobile nav toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('header nav ul');
     hamburger.addEventListener('click', () => {
@@ -312,8 +292,3 @@
 
 </body>
 </html>
-
-      
-
-
-
