@@ -403,7 +403,31 @@
     track.addEventListener('mouseenter', stopAutoScroll);
     track.addEventListener('mouseleave', startAutoScroll);
   </script>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // Dropdown toggle for mobile
+  const dropdownParents = document.querySelectorAll('nav ul > li > a');
+
+  dropdownParents.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        const dropdown = this.nextElementSibling;
+        if (dropdown && dropdown.classList.contains('dropdown')) {
+          e.preventDefault(); // prevent navigation
+          dropdown.classList.toggle('show');
+        }
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
