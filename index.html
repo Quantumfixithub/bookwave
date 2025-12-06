@@ -24,7 +24,7 @@
   position: relative;   /* add this */
   z-index: 1000;        /* ensure header/nav is above hero */
 }
-
+    header h1 { font-size: 1.5em; }
    nav ul {
   list-style: none;
   display: flex;
@@ -37,7 +37,7 @@
     nav a { color: white; text-decoration: none; }
     nav a.active { border-bottom: 2px solid white; }
 
- /* Mobile nav */
+/* Mobile nav */
 .hamburger { display: none; cursor: pointer; }
 .hamburger span {
   display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
@@ -52,10 +52,9 @@
     right: 20px;
     padding: 1em;
     border-radius: 8px;
-    width: 200px;       /* give it width so it doesn’t collapse */
-    z-index: 1000;      /* make sure it stays above hero */
   }
   nav ul.show { display: flex; }
+  .hamburger { display: block; }
 }
     /* Hero Section */
     .hero {
@@ -274,13 +273,23 @@
 
   <!-- JavaScript -->
   <script>
-    // Hamburger toggle
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
+   const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
     });
+
+    // Dropdown toggle for mobile
+    const dropdownParents = document.querySelectorAll('nav ul > li > a');
+    dropdownParents.forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          const dropdown = this.nextElementSibling;
+          if (dropdown && dropdown.classList.contains('dropdown')) {
+            e.preventDefault();
+            dropdown.classList.toggle('show');
+          }
 
     // Carousel auto-scroll
     const track = document.querySelector('.carousel-track');
@@ -320,6 +329,7 @@
 
 </body>
 </html>
+
 
 
 
