@@ -11,14 +11,40 @@
   <!-- Header -->
   <header style="background:#27ae60; color:white; padding:1em 2em; display:flex; justify-content:space-between; align-items:center;">
     <h1 style="font-size:1.5em;">Bookwave</h1>
-    <nav>
-      <ul style="list-style:none; display:flex; gap:1.5em; margin:0; padding:0;">
-        <li><a href="index.html" style="color:white; text-decoration:none;">Home</a></li>
-        <li><a href="about.html" style="color:white; text-decoration:none; border-bottom:2px solid white;">About</a></li>
-        <li><a href="donation.html" style="color:white; text-decoration:none;">Donation</a></li>
-        <li><a href="library.html" style="color:white; text-decoration:none;">Library</a></li>
+
+<nav aria-label="Main navigation">
+  <ul>
+    <li>
+      <a href="index.html" class="active">Home</a>
+      <ul class="dropdown">
+        <li><a href="index.html#hero">Hero Section</a></li>
+        <li><a href="index.html#collections">Collections</a></li>
       </ul>
-    </nav>
+    </li>
+    <li>
+      <a href="about.html">About</a>
+      <ul class="dropdown">
+        <li><a href="about.html#mission">Our Mission</a></li>
+        <li><a href="about.html#team">Team</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="library.html">Library</a>
+      <ul class="dropdown">
+        <li><a href="library.html#genres">Genres</a></li>
+        <li><a href="library.html#popular">Popular Picks</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="donation.html">Donation</a>
+      <ul class="dropdown">
+        <li><a href="donation.html#impact">Impact</a></li>
+        <li><a href="donation.html#form">Donate Now</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
   </header>
 
   <!-- About Bookwave -->
@@ -149,3 +175,4 @@
 
 </body>
 </html>
+
