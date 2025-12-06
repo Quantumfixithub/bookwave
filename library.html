@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bookwave - Library</title>
+  <title>The Impact Rebirth - Library</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
@@ -123,27 +123,77 @@
       .card-grid { grid-template-columns:1fr; }
     }
 
-    /* Footer */
-    footer {
-      background:#27ae60;
-      color:white;
-      padding:3em 2em;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      text-align:center;
-    }
-    footer h4 { margin-bottom:0.5em; }
-    footer ul { list-style:none; padding:0; }
-    footer ul li { margin-bottom:0.3em; }
-    footer a { color:white; text-decoration:none; }
+   /* Footer */
+footer {
+  background: #27ae60;
+  color: white;
+  padding: 3em 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+footer h4 {
+  margin-bottom: 0.5em;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer div {
+  margin: 1em;
+}
+
+footer input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+
+footer button {
+  padding: 0.5em 1em;
+  background: white;
+  color: #27ae60;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social {
+  width: 100%;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.social a {
+  margin: 0 0.5em;
+  color: white;
+  font-size: 1.2em;
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+
+
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1>Bookwave</h1>
+    <h1>The Impact Rebirth</h1>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -215,56 +265,55 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-     <div style="flex:1 1 200px;">
-      <h4>Bookwave</h4>
-      <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
-    </div>
+ <!-- Footer -->
+<footer>
+   <section class="hero">
+  <h1>The Impact Rebirth</h1>
+  </section>
 
-    <div style="flex:1 1 150px; text-align:center;">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="library.html" class="active">Library</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="donation.html">Donation</a></li>
-      </ul>
-    </div>
+  <div style="flex:1 1 150px; text-align:center;">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="library.html">Library</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="donation.html">Donation</a></li>
+    </ul>
+  </div>
 
-    <div style="flex:1 1 150px; text-align:center;">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-    </div>
+  <div style="flex:1 1 150px; text-align:center;">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="#">Help Center</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
 
-    <div style="flex:1 1 250px; text-align:center;">
-      <h4>Stay Connected</h4>
-      <p>Get the latest updates delivered to your inbox.</p>
-      <form action="#" method="post" style="margin-top:0.5em;">
-        <input type="email" placeholder="Enter your email" required
-          style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
-        <button type="submit"
-          style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
-          Subscribe Now
-        </button>
-      </form>
-    </div>
+  <div style="flex:1 1 250px; text-align:center;">
+    <h4>Stay Connected</h4>
+    <p>Get the latest updates delivered to your inbox.</p>
+    <form action="#" method="post" style="margin-top:0.5em;">
+      <input type="email" placeholder="Enter your email" required
+        style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
+      <button type="submit"
+        style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
+        Subscribe Now
+      </button>
+    </form>
+  </div>
 
-    <div style="width:100%; text-align:center; margin-top:2em;">
-      <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
-        <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
-      </div>
-      <p style="font-size:0.9em;">&copy; 2025 Bookwave. Happy Reading!</p>
+  <div style="width:100%; text-align:center; margin-top:2em;">
+    <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
+      <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
+      <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
+      <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
     </div>
-  </footer>
+    <p style="font-size:0.9em;">&copy; 2025 The Impact Rebirth. Happy Reading!</p>
+  </div>
+</footer>
 
   <!-- Filtering + Mobile Nav Script -->
   <script>
@@ -304,4 +353,3 @@
 
 </body>
 </html>
-
