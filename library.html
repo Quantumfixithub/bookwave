@@ -36,29 +36,37 @@
     header nav a { color:white; text-decoration:none; }
     header nav a.active { border-bottom:2px solid white; }
 
-    /* Mobile nav */
-    .hamburger { display:none; cursor:pointer; }
-    .hamburger span {
-      display:block;
-      width:25px;
-      height:3px;
-      background:white;
-      margin:5px 0;
-    }
-    @media (max-width:768px) {
-      header nav ul {
-        max-height:0;
-        overflow:hidden;
-        flex-direction:column;
-        background:#27ae60;
-        position:absolute;
-        top:60px;
-        right:0;
-        width:100%;
-        padding:0 1em;
-        z-index:1000;
-        transition:max-height 0.4s ease, padding 0.4s ease;
-      }
+   /* Mobile nav */
+.hamburger { display: none; cursor: pointer; }
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  header nav ul {
+    display: none;
+    flex-direction: column;
+    background: #27ae60;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 1em;
+    border-radius: 0;
+    z-index: 1000;
+  }
+  header nav ul.show { display: flex; }
+  header nav ul li {
+    text-align: center;
+    padding: 0.8em 0;
+  }
+  .hamburger { display: block; z-index: 1100; }
+}
+
       header nav ul.show {
         max-height:500px; /* enough to show all items */
         padding:1em;
@@ -261,7 +269,15 @@
 
   <!-- Filtering + Mobile Nav Script -->
   <script>
-    // Genre filtering
+   
+    const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('header nav ul');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+     // Genre filtering
     const genreCards = document.querySelectorAll('#genreGrid .card');
     const bookCards = document.querySelectorAll('#bookGrid .card');
     const searchBar = document.getElementById('searchBar');
@@ -298,3 +314,4 @@
 </body>
 </html>
  
+
