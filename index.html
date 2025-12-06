@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bookwave - Home</title>
+  <title>The Impact Rebirth - Home</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
@@ -168,13 +168,87 @@
     .social { width: 100%; text-align: center; margin-top: 2em; }
     .social a { margin: 0 0.5em; color: white; font-size: 1.2em; }
     .footer-copy { text-align: center; margin-top: 1em; font-size: 0.9em; }
+.impact {
+  background:#f9f9f9;        /* light background */
+  border:1px solid #ddd;     /* subtle border */
+  border-radius:8px;
+  padding:3em 2em;
+  margin:3em auto;
+  max-width:1000px;
+}
+
+.impact-container {
+  max-width:900px;
+  margin:0 auto;
+  text-align:justify;
+}
+
+.impact h2 {
+  color:#27ae60;             /* match The Impact Rebirth green */
+  margin-bottom:1em;
+text-align:center; /* centers the heading */
+}
+
+.hero {
+  text-align:center;
+  padding:2em 1em; /* reduce padding */
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;                     /* remove gap so borders touch */
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ddd;     /* outer border */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
+}
+
+.stats div {
+  text-align:center;
+}
+
+.stats div:last-child {
+  border-right: none;
+}
+
+.stats h3 {
+  color:#27ae60;
+  font-size:1.4em;  /* smaller number size */
+  margin-bottom:0.2em;
+}
+
+.stats p {
+  font-size:0.9em;  /* smaller label text */
+  margin:0;
+color: #333;
+}
+
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+  }
+  .stats div {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  .stats div:last-child {
+    border-bottom: none;
+  }
+}
+
+
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1 class="logo">Bookwave</h1>
+    <h1 class="logo">The Impact Rebirth</h1>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -198,11 +272,27 @@
   </section>
 
   <!-- Stats Section -->
-  <section class="stats" aria-label="Platform statistics">
-    <div><strong>100K+</strong><br>Books Reviewed</div>
-    <div><strong>5.0M+</strong><br>Reviews Shared</div>
-    <div><strong>4.8/5</strong><br>Avg. Rating</div>
-  </section>
+  <section class="impact">
+  <div class="impact-container">
+    <h2>The Impact Rebirth Movement</h2>
+    <p>
+      The Impact Rebirth Movement is a life-changing initiative created to remind humanity that no one is beyond redemption, restoration, or transformation. In a world where many have been wounded, disappointed, or pushed aside by life’s harsh realities, this movement rises as a voice of hopedeclaring boldly that your story can still be rewritten.
+    </p>
+    <p>
+      Life can sometimes take an ugly turn. People fail, fall, make mistakes, or lose their way. But Impact Rebirth Movement exists to say:<br>
+      <strong>“Your past is not your prison; you can start again.”</strong>
+    </p>
+    <p>
+      This movement brings together people who desire growth, healing, and revival spiritually, emotionally, mentally, and socially. Through teachings, mentorship programs, outreach initiatives, and inspirational platforms, it helps individuals rebuild confidence, rediscover purpose, and step into the best version of themselves.
+    </p>
+    <p>
+      Impact Rebirth Movement is not just a group it is a family, a community of reborn minds, renewed hearts, and restored destinies.
+    </p>
+    <p>
+      It is a global call for everyone who believes in second chances, new beginnings, and the power of impact-driven living.
+    </p>
+  </div>
+</section>
 
   <!-- Collections Carousel -->
   <section class="collections">
@@ -222,10 +312,24 @@
 
   <!-- Footer -->
   <footer>
-    <div style="flex:1 1 200px;">
-      <h4>Bookwave</h4>
-      <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
+   <section class="hero">
+  <h1>The Impact Rebirth</h1>
+  <div class="stats">
+    <div>
+      <h3>100K+</h3>
+      <p>Books Reviewed</p>
     </div>
+    <div>
+      <h3>5.0M+</h3>
+      <p>Reviews Shared</p>
+    </div>
+    <div>
+      <h3>4.8/5</h3>
+      <p>Avg. Rating</p>
+    </div>
+  </div>
+</section>
+
 
     <div style="flex:1 1 150px; text-align:center;">
       <h4>Explore</h4>
@@ -267,7 +371,7 @@
         <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
         <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
       </div>
-      <p style="font-size:0.9em;">&copy; 2025 Bookwave. Happy Reading!</p>
+      <p style="font-size:0.9em;">&copy; 2025 The Impact Rebirth. Happy Reading!</p>
     </div>
   </footer>
 
@@ -337,12 +441,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
