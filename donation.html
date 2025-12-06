@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Impact Rebirth - Donation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <style>
     body {
-      font-family: Segoe UI, sans-serif;
-      background: #f4fdf6;
       margin: 0;
+      font-family: Segoe UI, sans-serif;
+      background: #fdfdfd;
       color: #333;
     }
 
@@ -24,165 +25,416 @@
       position: relative;
       z-index: 1000;
     }
+
+    header h1 { 
+      font-size: 1.5em; 
+      margin: 0;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
       gap: 1.5em;
       margin: 0;
       padding: 0;
+      position: relative;
+      z-index: 1000;
     }
-    nav a { color: white; text-decoration: none; }
-    .hamburger { display: none; cursor: pointer; }
-    .hamburger span {
-      display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
-    }
-  /* Mobile nav */
-.hamburger { display: none; cursor: pointer; }
-.hamburger span {
-  display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
-}
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background: #27ae60;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 1em;
-    border-radius: 8px;
-  }
-  nav ul.show { display: flex; }
-  .hamburger { display: block; }
-}
 
-/* Dropdowns */
-nav ul li { position: relative; }
-nav ul li .dropdown {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  background: #2ecc71;
-  list-style: none;
-  padding: 0;
-  border-radius: 4px;
-}
-nav ul li .dropdown.show {
-  max-height: 500px;
-  padding: 0.5em;
-}
-nav ul li .dropdown a { color: white; text-decoration: none; }
-    /* Hero */
+    nav a { 
+      color: white; 
+      text-decoration: none;
+      transition: border 0.3s ease;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid white;
+    }
+
+    nav a.active { 
+      border-bottom: 2px solid white; 
+    }
+
+    /* Mobile nav */
+    .hamburger { 
+      display: none; 
+      cursor: pointer; 
+    }
+
+    .hamburger span {
+      display: block; 
+      width: 25px; 
+      height: 3px; 
+      background: white; 
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #27ae60;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1em;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      nav ul.show { display: flex; }
+      .hamburger { display: block; }
+    }
+
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 3em 2em;
-      background: #eafaf0;
+      padding: 4em 2em;
+      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+      color: white;
     }
-    .hero h2 { font-size: 2em; margin-bottom: 0.5em; }
-    .hero p { font-size: 1.1em; max-width: 600px; margin: 0 auto 2em; }
 
-    /* Donation Form */
+    .hero h2 { 
+      font-size: 2.5em; 
+      margin-bottom: 0.5em;
+    }
+
+    .hero p { 
+      font-size: 1.2em; 
+      max-width: 700px; 
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Donation Form Section */
     .donation-form {
       text-align: center;
-      padding: 3em 2em;
+      padding: 4em 2em;
       background: #ffffff;
     }
-    .donation-form h3 { font-size: 1.5em; margin-bottom: 1em; }
+
+    .donation-form h3 { 
+      font-size: 2em; 
+      margin-bottom: 0.5em;
+      color: #27ae60;
+    }
+
+    .donation-form > p {
+      font-size: 1.1em;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 2em;
+    }
+
     form {
       display: inline-block;
       text-align: left;
-      max-width: 400px;
+      max-width: 500px;
       width: 100%;
+      background: #f9f9f9;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+
+    label { 
+      display: block; 
+      margin-bottom: 0.5em; 
+      font-weight: 600;
+      color: #333;
+    }
+
     input, select {
       width: 100%;
-      padding: 0.7em;
-      margin-bottom: 1em;
-      border: 1px solid #ccc;
+      padding: 0.8em;
+      margin-bottom: 1.2em;
+      border: 1px solid #ddd;
       border-radius: 4px;
+      font-size: 1em;
+      transition: border 0.3s ease;
+      box-sizing: border-box;
     }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #27ae60;
+      box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+    }
+
     button {
-      padding: 0.7em 1.5em;
+      width: 100%;
+      padding: 0.9em 1.5em;
       background: #27ae60;
       color: white;
       border: none;
       border-radius: 4px;
-      font-size: 1em;
+      font-size: 1.1em;
       cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
     }
 
-   /* Footer */
-footer {
-  background: #27ae60;
-  color: white;
-  padding: 3em 2em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* centralized */
+    button:hover {
+      background: #229954;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+
+    /* Impact Stats Section */
+    .impact-stats {
+      text-align: center;
+      padding: 4em 2em;
+      background: #f9f9f9;
+    }
+
+    .impact-stats h3 {
+      font-size: 2em;
+      color: #27ae60;
+      margin-bottom: 0.5em;
+    }
+
+    .impact-stats > p {
+      font-size: 1.1em;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 2em;
+    }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2em;
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .stat-card i {
+      font-size: 2.5em;
+      color: #27ae60;
+      margin-bottom: 0.5em;
+    }
+
+    .stat-card h4 {
+      font-size: 2em;
+      color: #27ae60;
+      margin: 0.5em 0 0.2em;
+    }
+
+    .stat-card p {
+      color: #666;
+      font-size: 1em;
+    }
+
+    /* Footer */
+    footer {
+      background: #27ae60;
+      color: white;
+      padding: 3em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    footer h4 { 
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
+
+    footer ul { 
+      list-style: none; 
+      padding: 0; 
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 0.5em 0;
+    }
+
+    footer a { 
+      color: white; 
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
+    }
+
+    footer > div { 
+      margin: 1em;
+      flex: 1 1 200px;
+    }
+
+    footer input {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      margin-right: 0.5em;
+      width: 200px;
+    }
+
+    footer button {
+      padding: 0.5em 1em;
+      background: white;
+      color: #27ae60;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: auto;
+    }
+
+    footer button:hover {
+      background: #f0f0f0;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .social a { 
+      margin: 0 0.5em; 
+      color: white; 
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social a:hover {
+      transform: scale(1.2);
+    }
+
+   /* Footer Stats */
+.footer-stats {
   text-align: center;
+  width: 100%;
+  margin-bottom: 2em;
 }
-footer h4 { margin-bottom: 0.5em; }
-footer ul { list-style: none; padding: 0; }
-footer a { color: white; text-decoration: none; }
-.newsletter input {
-  padding: 0.5em;
-  border: none;
-  border-radius: 4px;
-  margin-right: 0.5em;
+
+.footer-stats h1 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
 }
-.newsletter button {
-  padding: 0.5em 1em;
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
   background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.stats-container > div {
+  flex: 1;
+  padding: 1.5em;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.stats-container > div:last-child {
+  border-right: none;
+}
+
+.stats-container > div:hover {
+  background: #f5f5f5;
+}
+
+.stats-container h3 {
   color: #27ae60;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.social { width: 100%; text-align: center; margin-top: 2em; }
-.social a { margin: 0 0.5em; color: white; font-size: 1.2em; }
-.footer-copy { text-align: center; margin-top: 1em; font-size: 0.9em; }
-.hero {
-  text-align:center;
-  padding:3em 2em;
+  font-size: 1.8em;
+  margin: 0 0 0.2em 0;
 }
 
-.stats {
-  display:flex;
-  justify-content:center;
-  gap:3em;
-  margin-top:1.5em;
+.stats-container p {
+  font-size: 0.9em;
+  margin: 0;
+  color: #333;
 }
 
-.stats div {
-  text-align:center;
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+  }
 
-.stats h3 {
-  color:#27ae60;
-  font-size:2em;
-  margin-bottom:0.3em;
-}
+  .stats-container > div {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
 
-/* Responsive: stack vertically on small screens */
-@media (max-width:768px) {
-  .stats {
-    flex-direction:column;
-    gap:1.5em;
+  .stats-container > div:last-child {
+    border-bottom: none;
   }
 }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 1.8em;
+      }
+
+      .stats-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form {
+        padding: 1.5em;
+      }
+
+      .footer-stats-container {
+        flex-direction: column;
+      }
+
+      .footer-stats-container > div {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .footer-stats-container > div:last-child {
+        border-bottom: none;
+      }
+
+      footer input {
+        width: 100%;
+        margin: 0.5em 0;
+      }
+
+      footer button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1>Impact Rebirth</h1>
-    <nav>
+    <h1 class="logo">Impact Rebirth</h1>
+    <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="donation.html">Donation</a></li>
+        <li><a href="donation.html" class="active">Donation</a></li>
         <li><a href="library.html">Library</a></li>
       </ul>
     </nav>
@@ -192,21 +444,22 @@ footer a { color: white; text-decoration: none; }
   <!-- Hero -->
   <section class="hero">
     <h2>Help Us Grow the Library</h2>
-    <p>Your donation helps us expand our collection, improve our platform, and make reading accessible to everyone.</p>
+    <p>Your donation helps us expand our collection, improve our platform, and make reading accessible to everyone, everywhere.</p>
   </section>
 
   <!-- Donation Form -->
   <section class="donation-form">
     <h3>Make a Monetary Donation</h3>
+    <p>Every contribution, no matter the size, helps us bring more books to more readers.</p>
     <form id="donationForm">
       <label for="name">Your Name:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required placeholder="Enter your full name" />
 
       <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email" required placeholder="your@email.com" />
 
       <label for="amount">Donation Amount:</label>
-      <input type="number" id="amount" name="amount" required />
+      <input type="number" id="amount" name="amount" required placeholder="Enter amount" min="1" />
 
       <label for="currency">Currency:</label>
       <select id="currency" name="currency">
@@ -227,94 +480,171 @@ footer a { color: white; text-decoration: none; }
     </form>
   </section>
 
+  <!-- Impact Stats -->
+  <section class="impact-stats">
+    <h3>Your Impact Matters</h3>
+    <p>See how donations like yours have helped us grow and serve the community better.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <i class="fas fa-book"></i>
+        <h4>10,000+</h4>
+        <p>Books Added</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <h4>50,000+</h4>
+        <p>Active Readers</p>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-heart"></i>
+        <h4>$100K+</h4>
+        <p>Donations Received</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer>
-     <section>
-  <h1>Impact Rebirth</h1>
-     </section>
-    <div>
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="donation.html">Donation</a></li>
-      </ul>
+ <!-- Footer -->
+<footer>
+  <!-- Stats Section in Footer -->
+  <div class="footer-stats">
+    <h1>Impact Rebirth</h1>
+    <div class="stats-container">
+      <div>
+        <h3>100K+</h3>
+        <p>Books Reviewed</p>
+      </div>
+      <div>
+        <h3>5.0M+</h3>
+        <p>Reviews Shared</p>
+      </div>
+      <div>
+        <h3>4.8/5</h3>
+        <p>Avg. Rating</p>
+      </div>
     </div>
-    <div>
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-    </div>
-    <div class="newsletter">
-      <h4>Stay Connected</h4>
-      <p>Get the latest updates delivered to your inbox.</p>
-      <form>
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe Now</button>
-      </form>
-    </div>
-    <div class="social">
+  </div>
+
+  <!-- Footer Links -->
+  <div style="flex:1 1 150px; text-align:center;">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="library.html">Library</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="donation.html">Donation</a></li>
+    </ul>
+  </div>
+
+  <div style="flex:1 1 150px; text-align:center;">
+    <h4>Support</h4>
+    <ul>
+      <li><a href="#">Help Center</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+
+  <div style="flex:1 1 250px; text-align:center;">
+    <h4>Stay Connected</h4>
+    <p>Get the latest updates delivered to your inbox.</p>
+    <form action="#" method="post" style="margin-top:0.5em;">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe Now</button>
+    </form>
+  </div>
+
+  <!-- Social Media & Copyright -->
+  <div style="width:100%; text-align:center; margin-top:2em;">
+    <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
       <a href="#"><i class="fab fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-linkedin-in"></i></a>
     </div>
-    <p class="footer-copy">&copy; 2025 Impact Rebirth. Happy Reading!</p>
-  </footer>
+    <p style="font-size:0.9em;">&copy; 2025 Impact Rebirth. Happy Reading!</p>
+  </div>
+</footer>
 
-  <!-- JavaScript -->
- <script>
-  // Hamburger toggle for mobile nav
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
+  
+ <!-- JavaScript -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
 
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
 
-  // Paystack donation form
-  document.getElementById('donationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    let handler = PaystackPop.setup({
-      key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
-      email: document.getElementById('email').value,
-      amount: document.getElementById('amount').value * 100, // Convert to kobo
-      currency: document.getElementById('currency').value,
-      metadata: {
-        custom_fields: [
-          {
-            display_name: "Name",
-            variable_name: "donor_name",
-            value: document.getElementById('name').value
-          },
-          {
-            display_name: "Frequency",
-            variable_name: "donation_frequency",
-            value: document.getElementById('frequency').value
-          }
-        ]
-      },
-      callback: function(response) {
-        alert('Thank you! Your donation was successful. Reference: ' + response.reference);
-      },
-      onClose: function() {
-        alert('Donation window closed.');
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove('show');
       }
     });
 
-    handler.openIframe();
-  });
-</script>
+    // Set active page based on current URL
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    // Paystack donation form
+    document.getElementById('donationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const amount = document.getElementById('amount').value;
+      const currency = document.getElementById('currency').value;
+
+      // Validate amount
+      if (amount <= 0) {
+        alert('Please enter a valid donation amount.');
+        return;
+      }
+
+      let handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your actual Paystack public key
+        email: document.getElementById('email').value,
+        amount: amount * 100, // Convert to smallest currency unit (kobo for NGN, cents for USD)
+        currency: currency,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Donor Name",
+              variable_name: "donor_name",
+              value: document.getElementById('name').value
+            },
+            {
+              display_name: "Donation Frequency",
+              variable_name: "donation_frequency",
+              value: document.getElementById('frequency').value
+            }
+          ]
+        },
+        callback: function(response) {
+          // Payment successful
+          alert('Thank you for your generous donation! Your transaction reference: ' + response.reference);
+          
+          // You can send this reference to your backend to verify the payment
+          // Example: fetch('/verify-payment', { method: 'POST', body: JSON.stringify({ reference: response.reference }) })
+          
+          // Reset form
+          document.getElementById('donationForm').reset();
+        },
+        onClose: function() {
+          alert('Payment window closed. If you wish to complete your donation, please try again.');
+        }
+      });
+
+      handler.openIframe();
+    });
+  </script>
+
 </body>
 </html>
-
-
-
-
-
