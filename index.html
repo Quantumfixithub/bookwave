@@ -45,14 +45,18 @@
     background: #27ae60;
     position: absolute;
     top: 60px;
-    right: 20px;
+    right: 0;          /* align to right edge */
+    width: 100%;       /* full width */
     padding: 1em;
-    border-radius: 8px;
+    border-radius: 0;  /* optional: remove rounded corners */
   }
   nav ul.show { display: flex; }
+  nav ul li {
+    padding: 0.8em 0;
+    text-align: center;
+  }
   .hamburger { display: block; }
 }
-
     /* Hero Section */
     .hero {
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_X4bD6ialWuEg8cX1x6WPjyKjlbp_mOzh1g&s') center center / cover no-repeat;
@@ -315,4 +319,5 @@
 
 </body>
 </html>
+
 
