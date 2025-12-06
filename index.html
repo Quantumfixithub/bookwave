@@ -15,47 +15,76 @@
 
     /* Header */
     header {
-  background: #27ae60;
-  color: white;
-  padding: 1em 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;   /* add this */
-  z-index: 1000;        /* ensure header/nav is above hero */
-}
-    header h1 { font-size: 1.5em; }
-   nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5em;
-  margin: 0;
-  padding: 0;
-  position: relative;   /* add positioning */
-  z-index: 1000;        /* keep nav above hero image */
-}
-    nav a { color: white; text-decoration: none; }
-    nav a.active { border-bottom: 2px solid white; }
+      background: #27ae60;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+    }
 
-/* Mobile nav */
-.hamburger { display: none; cursor: pointer; }
-.hamburger span {
-  display: block; width: 25px; height: 3px; background: white; margin: 5px 0;
-}
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background: #27ae60;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 1em;
-    border-radius: 8px;
-  }
-  nav ul.show { display: flex; }
-  .hamburger { display: block; }
-}
+    header h1 { 
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1000;
+    }
+
+    nav a { 
+      color: white; 
+      text-decoration: none;
+      transition: border 0.3s ease;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid white;
+    }
+
+    nav a.active { 
+      border-bottom: 2px solid white; 
+    }
+
+    /* Mobile nav */
+    .hamburger { 
+      display: none; 
+      cursor: pointer; 
+    }
+
+    .hamburger span {
+      display: block; 
+      width: 25px; 
+      height: 3px; 
+      background: white; 
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #27ae60;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1em;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      nav ul.show { display: flex; }
+      .hamburger { display: block; }
+    }
+
     /* Hero Section */
     .hero {
       background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_X4bD6ialWuEg8cX1x6WPjyKjlbp_mOzh1g&s') center center / cover no-repeat;
@@ -64,6 +93,7 @@
       padding: 6em 2em;
       position: relative;
     }
+
     .hero::before {
       content: "";
       position: absolute;
@@ -71,10 +101,29 @@
       background: rgba(39, 174, 96, 0.85);
       z-index: 0;
     }
-    .hero * { position: relative; z-index: 1; }
-    .hero h2 { font-size: 2.5em; margin-bottom: 0.3em; }
-    .hero h3 { font-size: 1.5em; margin-bottom: 1em; }
-    .hero p { font-size: 1.1em; max-width: 600px; margin: 0 auto 2em; }
+
+    .hero * { 
+      position: relative; 
+      z-index: 1; 
+    }
+
+    .hero h2 { 
+      font-size: 2.5em; 
+      margin-bottom: 0.3em; 
+    }
+
+    .hero h3 { 
+      font-size: 1.5em; 
+      margin-bottom: 1em; 
+    }
+
+    .hero p { 
+      font-size: 1.1em; 
+      max-width: 600px; 
+      margin: 0 auto 2em;
+      line-height: 1.6;
+    }
+
     .hero-buttons a {
       padding: 0.8em 1.5em;
       margin: 0 0.5em;
@@ -82,47 +131,109 @@
       font-size: 1em;
       text-decoration: none;
       display: inline-block;
+      transition: all 0.3s ease;
     }
-    .btn.primary { background: #27ae60; color: white; }
-    .btn.secondary { background: #ccc; color: #333; }
 
-    /* Stats Section */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 3em;
-      padding: 2em;
-      background: #ffffff;
-      font-size: 1.1em;
+    .btn.primary { 
+      background: #27ae60; 
+      color: white; 
+    }
+
+    .btn.primary:hover {
+      background: #229954;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
+
+    .btn.secondary { 
+      background: #fff; 
+      color: #27ae60; 
+    }
+
+    .btn.secondary:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Impact Section */
+    .impact {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 4em 2em;
+      margin: 3em auto;
+      max-width: 1000px;
+    }
+
+    .impact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: justify;
+    }
+
+    .impact h2 {
+      color: #27ae60;
+      margin-bottom: 1em;
       text-align: center;
+      font-size: 2em;
     }
-    .stats div strong { font-size: 1.5em; color: #27ae60; }
 
-    /* Carousel */
-    .collections { padding: 3em 2em; background: #f9f9f9; text-align: center; }
-    .collections h3 { font-size: 1.8em; margin-bottom: 1em; }
+    .impact p {
+      line-height: 1.8;
+      margin-bottom: 1em;
+    }
+
+    /* Collections Carousel */
+    .collections { 
+      padding: 4em 2em; 
+      background: #fff; 
+      text-align: center; 
+    }
+
+    .collections h3 { 
+      font-size: 2em; 
+      margin-bottom: 1em;
+      color: #27ae60;
+    }
+
     .carousel {
       position: relative;
       overflow: hidden;
       max-width: 1000px;
       margin: 2em auto;
     }
+
     .carousel-track {
       display: flex;
       transition: transform 0.5s ease;
     }
+
     .slide {
       min-width: 200px;
       margin: 0 1em;
       text-align: center;
     }
+
     .slide img {
       width: 180px;
       height: 260px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
     }
+
+    .slide img:hover {
+      transform: scale(1.05);
+    }
+
+    .slide p {
+      margin-top: 0.5em;
+      font-size: 0.9em;
+      color: #666;
+    }
+
     .carousel button {
       position: absolute;
       top: 50%;
@@ -133,7 +244,15 @@
       padding: 0.5em 1em;
       cursor: pointer;
       border-radius: 4px;
+      transition: all 0.3s ease;
+      z-index: 10;
     }
+
+    .carousel button:hover {
+      background: #229954;
+      transform: translateY(-50%) scale(1.1);
+    }
+
     .carousel .prev { left: 0; }
     .carousel .next { right: 0; }
 
@@ -147,16 +266,45 @@
       justify-content: center;
       text-align: center;
     }
-    footer h4 { margin-bottom: 0.5em; }
-    footer ul { list-style: none; padding: 0; }
-    footer a { color: white; text-decoration: none; }
-    footer div { margin: 1em; }
+
+    footer h4 { 
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
+
+    footer ul { 
+      list-style: none; 
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 0.5em 0;
+    }
+
+    footer a { 
+      color: white; 
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
+    }
+
+    footer > div { 
+      margin: 1em;
+      flex: 1 1 200px;
+    }
+
     footer input {
       padding: 0.5em;
       border: none;
       border-radius: 4px;
       margin-right: 0.5em;
+      width: 200px;
     }
+
     footer button {
       padding: 0.5em 1em;
       background: white;
@@ -164,84 +312,135 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
-    .social { width: 100%; text-align: center; margin-top: 2em; }
-    .social a { margin: 0 0.5em; color: white; font-size: 1.2em; }
-    .footer-copy { text-align: center; margin-top: 1em; font-size: 0.9em; }
-.impact {
-  background:#f9f9f9;        /* light background */
-  border:1px solid #ddd;     /* subtle border */
-  border-radius:8px;
-  padding:3em 2em;
-  margin:3em auto;
-  max-width:1000px;
-}
 
-.impact-container {
-  max-width:900px;
-  margin:0 auto;
-  text-align:justify;
-}
+    footer button:hover {
+      background: #f0f0f0;
+    }
 
-.impact h2 {
-  color:#27ae60;             /* match The Impact Rebirth green */
-  margin-bottom:1em;
-text-align:center; /* centers the heading */
-}
+    .social a { 
+      margin: 0 0.5em; 
+      color: white; 
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
 
-.hero {
-  text-align:center;
-  padding:2em 1em; /* reduce padding */
-}
+    .social a:hover {
+      transform: scale(1.2);
+    }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 0;                     /* remove gap so borders touch */
-  max-width: 600px;
-  margin: 0 auto;
-  border: 1px solid #ddd;     /* outer border */
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* soft shadow */
-}
+    /* Footer Stats */
+    .footer-stats {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 2em;
+    }
 
-.stats div {
-  text-align:center;
-}
+    .footer-stats h1 {
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
 
-.stats div:last-child {
-  border-right: none;
-}
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-.stats h3 {
-  color:#27ae60;
-  font-size:1.4em;  /* smaller number size */
-  margin-bottom:0.2em;
-}
+    .stats-container > div {
+      flex: 1;
+      padding: 1.5em;
+      border-right: 1px solid #ddd;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
 
-.stats p {
-  font-size:0.9em;  /* smaller label text */
-  margin:0;
-color: #333;
-}
+    .stats-container > div:last-child {
+      border-right: none;
+    }
 
+    .stats-container > div:hover {
+      background: #f5f5f5;
+    }
 
-/* Responsive: stack vertically on small screens */
-@media (max-width: 768px) {
-  .stats {
-    flex-direction: column;
-  }
-  .stats div {
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
-  .stats div:last-child {
-    border-bottom: none;
-  }
-}
+    .stats-container h3 {
+      color: #27ae60;
+      font-size: 1.8em;
+      margin: 0 0 0.2em 0;
+    }
 
+    .stats-container p {
+      font-size: 0.9em;
+      margin: 0;
+      color: #333;
+    }
 
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 1.8em;
+      }
+
+      .hero h3 {
+        font-size: 1.2em;
+      }
+
+      .hero-buttons a {
+        display: block;
+        margin: 0.5em auto;
+        max-width: 200px;
+      }
+
+      .slide {
+        min-width: 150px;
+      }
+
+      .slide img {
+        width: 140px;
+        height: 200px;
+      }
+
+      .stats-container {
+        flex-direction: column;
+      }
+
+      .stats-container > div {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .stats-container > div:last-child {
+        border-bottom: none;
+      }
+
+      footer input {
+        width: 100%;
+        margin: 0.5em 0;
+      }
+
+      footer button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 4em 1em;
+      }
+
+      .carousel button {
+        padding: 0.3em 0.7em;
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -271,28 +470,28 @@ color: #333;
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- Impact Section -->
   <section class="impact">
-  <div class="impact-container">
-    <h2>Impact Rebirth Movement</h2>
-    <p>
-      The Impact Rebirth Movement is a life-changing initiative created to remind humanity that no one is beyond redemption, restoration, or transformation. In a world where many have been wounded, disappointed, or pushed aside by life’s harsh realities, this movement rises as a voice of hopedeclaring boldly that your story can still be rewritten.
-    </p>
-    <p>
-      Life can sometimes take an ugly turn. People fail, fall, make mistakes, or lose their way. But Impact Rebirth Movement exists to say:<br>
-      <strong>“Your past is not your prison; you can start again.”</strong>
-    </p>
-    <p>
-      This movement brings together people who desire growth, healing, and revival spiritually, emotionally, mentally, and socially. Through teachings, mentorship programs, outreach initiatives, and inspirational platforms, it helps individuals rebuild confidence, rediscover purpose, and step into the best version of themselves.
-    </p>
-    <p>
-      Impact Rebirth Movement is not just a group it is a family, a community of reborn minds, renewed hearts, and restored destinies.
-    </p>
-    <p>
-      It is a global call for everyone who believes in second chances, new beginnings, and the power of impact-driven living.
-    </p>
-  </div>
-</section>
+    <div class="impact-container">
+      <h2>Impact Rebirth Movement</h2>
+      <p>
+        The Impact Rebirth Movement is a life-changing initiative created to remind humanity that no one is beyond redemption, restoration, or transformation. In a world where many have been wounded, disappointed, or pushed aside by life's harsh realities, this movement rises as a voice of hope—declaring boldly that your story can still be rewritten.
+      </p>
+      <p>
+        Life can sometimes take an ugly turn. People fail, fall, make mistakes, or lose their way. But Impact Rebirth Movement exists to say:<br>
+        <strong>"Your past is not your prison; you can start again."</strong>
+      </p>
+      <p>
+        This movement brings together people who desire growth, healing, and revival spiritually, emotionally, mentally, and socially. Through teachings, mentorship programs, outreach initiatives, and inspirational platforms, it helps individuals rebuild confidence, rediscover purpose, and step into the best version of themselves.
+      </p>
+      <p>
+        Impact Rebirth Movement is not just a group—it is a family, a community of reborn minds, renewed hearts, and restored destinies.
+      </p>
+      <p>
+        It is a global call for everyone who believes in second chances, new beginnings, and the power of impact-driven living.
+      </p>
+    </div>
+  </section>
 
   <!-- Collections Carousel -->
   <section class="collections">
@@ -300,11 +499,26 @@ color: #333;
     <div class="carousel">
       <button class="prev">&#10094;</button>
       <div class="carousel-track">
-        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg94zRTcNOsNVGgb_dSHJQINfMMHn2lsZ4mw&s" alt="The Midnight Library" /><p>The Midnight Library – Matt Haig</p></div>
-        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd34WheocuQmi2mkx0_50dmd3Eg6YShTuLYQ&s" alt="Project Hail Mary" /><p>Project Hail Mary – Andy Weir</p></div>
-        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwKlcNLyHUgTwW3pkt9CqjWRtKK84i8Y7jyw&s" alt="Malibu Rising" /><p>Malibu Rising – Taylor Jenkins Reid</p></div>
-                <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FQk_SzsEpthTOwnx_R9tM348IXFH0jvccw&s" alt="Atomic Habits" /><p>Atomic Habits – James Clear</p></div>
-        <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1724dV6HARfCCQTSp4luZ3mOWu67olv_vRQ&s" alt="Becoming" /><p>Becoming – Michelle Obama</p></div>
+        <div class="slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg94zRTcNOsNVGgb_dSHJQINfMMHn2lsZ4mw&s" alt="The Midnight Library" loading="lazy" />
+          <p>The Midnight Library – Matt Haig</p>
+        </div>
+        <div class="slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd34WheocuQmi2mkx0_50dmd3Eg6YShTuLYQ&s" alt="Project Hail Mary" loading="lazy" />
+          <p>Project Hail Mary – Andy Weir</p>
+        </div>
+        <div class="slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwKlcNLyHUgTwW3pkt9CqjWRtKK84i8Y7jyw&s" alt="Malibu Rising" loading="lazy" />
+          <p>Malibu Rising – Taylor Jenkins Reid</p>
+        </div>
+        <div class="slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FQk_SzsEpthTOwnx_R9tM348IXFH0jvccw&s" alt="Atomic Habits" loading="lazy" />
+          <p>Atomic Habits – James Clear</p>
+        </div>
+        <div class="slide">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1724dV6HARfCCQTSp4luZ3mOWu67olv_vRQ&s" alt="Becoming" loading="lazy" />
+          <p>Becoming – Michelle Obama</p>
+        </div>
       </div>
       <button class="next">&#10095;</button>
     </div>
@@ -312,25 +526,26 @@ color: #333;
 
   <!-- Footer -->
   <footer>
-   <section class="hero">
-  <h1>Impact Rebirth</h1>
-  <div class="stats">
-    <div>
-      <h3>100K+</h3>
-      <p>Books Reviewed</p>
+    <!-- Stats Section in Footer -->
+    <div class="footer-stats">
+      <h1>Impact Rebirth</h1>
+      <div class="stats-container">
+        <div>
+          <h3>100K+</h3>
+          <p>Books Reviewed</p>
+        </div>
+        <div>
+          <h3>5.0M+</h3>
+          <p>Reviews Shared</p>
+        </div>
+        <div>
+          <h3>4.8/5</h3>
+          <p>Avg. Rating</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3>5.0M+</h3>
-      <p>Reviews Shared</p>
-    </div>
-    <div>
-      <h3>4.8/5</h3>
-      <p>Avg. Rating</p>
-    </div>
-  </div>
-</section>
 
-
+    <!-- Footer Links -->
     <div style="flex:1 1 150px; text-align:center;">
       <h4>Explore</h4>
       <ul>
@@ -355,90 +570,95 @@ color: #333;
       <h4>Stay Connected</h4>
       <p>Get the latest updates delivered to your inbox.</p>
       <form action="#" method="post" style="margin-top:0.5em;">
-        <input type="email" placeholder="Enter your email" required
-          style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
-        <button type="submit"
-          style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
-          Subscribe Now
-        </button>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe Now</button>
       </form>
     </div>
 
+    <!-- Social Media & Copyright -->
     <div style="width:100%; text-align:center; margin-top:2em;">
       <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
-        <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <p style="font-size:0.9em;">&copy; 2025 Impact Rebirth. Happy Reading!</p>
     </div>
   </footer>
 
+  <!-- JavaScript -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
 
- <!-- JavaScript -->
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav ul');
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
 
-  // Hamburger toggle
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-  // Dropdown toggle for mobile
-  const dropdownParents = document.querySelectorAll('nav ul > li > a');
-  dropdownParents.forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (window.innerWidth <= 768) {
-        const dropdown = this.nextElementSibling;
-        if (dropdown && dropdown.classList.contains('dropdown')) {
-          e.preventDefault();
-          dropdown.classList.toggle('show');
-        }
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove('show');
       }
     });
-  });
 
-  // Carousel auto-scroll
-  const track = document.querySelector('.carousel-track');
-  const slides = Array.from(track.children);
-  const nextButton = document.querySelector('.next');
-  const prevButton = document.querySelector('.prev');
-  let currentIndex = 0;
-  let autoScroll;
+    // Set active page based on current URL
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
 
-  function updateCarousel() {
-    const slideWidth = slides[0].getBoundingClientRect().width + 20;
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-  }
+    // Carousel functionality
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    let currentIndex = 0;
+    let autoScroll;
 
-  function startAutoScroll() {
-    autoScroll = setInterval(() => {
+    function updateCarousel() {
+      const slideWidth = slides[0].getBoundingClientRect().width + 20;
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    function startAutoScroll() {
+      autoScroll = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      }, 3000);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScroll);
+    }
+
+    nextButton.addEventListener('click', () => {
+      stopAutoScroll();
       currentIndex = (currentIndex + 1) % slides.length;
       updateCarousel();
-    }, 3000);
-  }
+      startAutoScroll();
+    });
 
-  function stopAutoScroll() {
-    clearInterval(autoScroll);
-  }
+    prevButton.addEventListener('click', () => {
+      stopAutoScroll();
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateCarousel();
+      startAutoScroll();
+    });
 
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateCarousel();
-  });
-
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
-
-  startAutoScroll();
-  track.addEventListener('mouseenter', stopAutoScroll);
-  track.addEventListener('mouseleave', startAutoScroll);
-</script>
+    // Initialize carousel
+    if (slides.length > 0) {
+      startAutoScroll();
+      track.addEventListener('mouseenter', stopAutoScroll);
+      track.addEventListener('mouseleave', startAutoScroll);
+    }
+  </script>
 
 </body>
 </html>
-
