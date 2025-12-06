@@ -363,3 +363,29 @@ footer {
   font-size: 0.95em;
   color: #555;
 }
+/* Dropdown hidden by default */
+nav ul li .dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: #27ae60;
+  list-style: none;
+  padding: 0;
+  border-radius: 4px;
+}
+
+/* Dropdown visible */
+nav ul li .dropdown.show {
+  max-height: 500px; /* enough space for items */
+  padding: 0.5em;
+}
+
+nav ul li .dropdown li {
+  margin: 0.5em 0;
+}
+
+nav ul li .dropdown a {
+  color: white;
+  text-decoration: none;
+}
+
