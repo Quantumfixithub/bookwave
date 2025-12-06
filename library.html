@@ -36,41 +36,28 @@
     header nav a { color:white; text-decoration:none; }
     header nav a.active { border-bottom:2px solid white; }
 
-   /* Mobile nav */
-.hamburger { display: none; cursor: pointer; }
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-}
-
-@media (max-width: 768px) {
-  header nav ul {
-    display: none;
-    flex-direction: column;
-    background: #27ae60;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    padding: 1em;
-    border-radius: 0;
-    z-index: 1000;
-  }
-  header nav ul.show { display: flex; }
-  header nav ul li {
-    text-align: center;
-    padding: 0.8em 0;
-  }
-  .hamburger { display: block; z-index: 1100; }
-}
-
-      header nav ul.show {
-        max-height:500px; /* enough to show all items */
+    /* Mobile nav */
+    .hamburger { display:none; cursor:pointer; }
+    .hamburger span {
+      display:block;
+      width:25px;
+      height:3px;
+      background:white;
+      margin:5px 0;
+    }
+    @media (max-width:768px) {
+      header nav ul {
+        display:none;
+        flex-direction:column;
+        background:#27ae60;
+        position:absolute;
+        top:60px;
+        right:0;
+        width:100%;
         padding:1em;
+        z-index:1000;
       }
+      header nav ul.show { display:flex; }
       header nav ul li {
         text-align:center;
         padding:0.8em 0;
@@ -210,7 +197,7 @@
       </div>
     </div>
     <div style="margin-top:2em;">
-            <button style="padding:0.7em 1.5em; background:#27ae60; color:white; border:none; border-radius:4px; font-size:1em; cursor:pointer;">
+      <button style="padding:0.7em 1.5em; background:#27ae60; color:white; border:none; border-radius:4px; font-size:1em; cursor:pointer;">
         Load More Books
       </button>
     </div>
@@ -218,7 +205,7 @@
 
   <!-- Footer -->
   <footer>
-    <div style="flex:1 1 200px;">
+        <div style="flex:1 1 200px;">
       <h4>Bookwave</h4>
       <p>Your gateway to endless stories. Discover, read, and share the joy of books.</p>
     </div>
@@ -269,15 +256,7 @@
 
   <!-- Filtering + Mobile Nav Script -->
   <script>
-   
-    const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('header nav ul');
-
-  hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');
-  });
-
-     // Genre filtering
+    // Genre filtering
     const genreCards = document.querySelectorAll('#genreGrid .card');
     const bookCards = document.querySelectorAll('#bookGrid .card');
     const searchBar = document.getElementById('searchBar');
@@ -303,7 +282,7 @@
       });
     }
 
-    // Mobile nav toggle
+    // Mobile nav toggle (uniform with Home page)
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('header nav ul');
     hamburger.addEventListener('click', () => {
@@ -313,5 +292,5 @@
 
 </body>
 </html>
- 
 
+      
