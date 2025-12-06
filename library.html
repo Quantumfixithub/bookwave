@@ -8,192 +8,396 @@
 
   <style>
     body {
-      margin:0;
-      font-family:Segoe UI, sans-serif;
-      background:#fdfdfd;
-      color:#333;
+      margin: 0;
+      font-family: Segoe UI, sans-serif;
+      background: #fdfdfd;
+      color: #333;
     }
 
     /* Header */
     header {
-      background:#27ae60;
-      color:white;
-      padding:1em 2em;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:relative;
-      z-index:1000;
+      background: #27ae60;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
     }
-    header h1 { font-size:1.5em; }
-    header nav ul {
-      list-style:none;
-      display:flex;
-      gap:1.5em;
-      margin:0;
-      padding:0;
+
+    header h1 { 
+      font-size: 1.5em;
+      margin: 0;
     }
-    header nav a { color:white; text-decoration:none; }
-    header nav a.active { border-bottom:2px solid white; }
 
-  /* Mobile nav */
-.hamburger { display:none; cursor:pointer; }
-.hamburger span {
-  display:block;
-  width:25px;
-  height:3px;
-  background:white;
-  margin:5px 0;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 1000;
+    }
 
-@media (max-width:768px) {
-  header nav ul {
-    display:none;
-    flex-direction:column;
-    background:#27ae60;   /* same green background */
-    position:absolute;
-    top:60px;
-    left:0;               /* full width dropdown */
-    width:100%;
-    text-align:center;
-    padding:0;
-    margin:0;
-    z-index:1000;
-  }
-  header nav ul.show { display:block; }
-  header nav ul li {
-    border-top:1px solid rgba(255,255,255,0.2);
-    padding:1em 0;
-  }
-  header nav ul li:first-child { border-top:none; }
-  header nav a {
-    display:block;
-    width:100%;
-    color:white;
-    text-decoration:none;
-    font-size:1.1em;
-  }
-  .hamburger { display:block; z-index:1100; }
-}
+    nav a { 
+      color: white; 
+      text-decoration: none;
+      transition: border 0.3s ease;
+    }
 
+    nav a:hover {
+      border-bottom: 2px solid white;
+    }
+
+    nav a.active { 
+      border-bottom: 2px solid white; 
+    }
+
+    /* Mobile nav */
+    .hamburger { 
+      display: none; 
+      cursor: pointer; 
+    }
+
+    .hamburger span {
+      display: block; 
+      width: 25px; 
+      height: 3px; 
+      background: white; 
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #27ae60;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 1em;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      nav ul.show { display: flex; }
+      .hamburger { display: block; }
+    }
+
+    /* Hero Section */
+    .library-hero {
+      text-align: center;
+      padding: 4em 2em;
+      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+      color: white;
+    }
+
+    .library-hero h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .library-hero p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 0 auto 1.5em;
+    }
+
+    #searchBar {
+      margin-top: 1em;
+      padding: 0.8em 1em;
+      width: 80%;
+      max-width: 500px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #searchBar:focus {
+      outline: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 3em 2em;
+      text-align: center;
+    }
+
+    .section h3 {
+      font-size: 2em;
+      margin-bottom: 1em;
+      color: #27ae60;
+    }
 
     /* Card Grid */
     .card-grid {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:2em;
-      justify-items:center;
-      padding:2em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2em;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
     }
+
     .card {
-      width:180px;
-      height:160px;
-      background:white;
-      border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      text-align:center;
-      padding:1em;
-      transition:transform 0.3s ease, box-shadow 0.3s ease;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1.5em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 160px;
     }
+
     .card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 8px 16px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .card img {
-      width:100%;
-      border-radius:4px;
-      margin-bottom:0.5em;
+
+    .card.selected {
+      border: 3px solid #27ae60;
+      background: #f0fdf4;
     }
+
     .card i {
-      font-size:2em;
-      color:#27ae60;
-      margin-bottom:0.5em;
-    }
-    .selected { border:2px solid #27ae60; }
-
-    @media (max-width:900px) {
-      .card-grid { grid-template-columns:repeat(2,1fr); }
-    }
-    @media (max-width:500px) {
-      .card-grid { grid-template-columns:1fr; }
+      font-size: 2.5em;
+      color: #27ae60;
+      margin-bottom: 0.5em;
     }
 
-   /* Footer */
-footer {
-  background: #27ae60;
-  color: white;
-  padding: 3em 2em;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-}
+    .card h4 {
+      font-size: 1em;
+      margin: 0.5em 0 0.3em;
+      color: #333;
+    }
 
-footer h4 {
-  margin-bottom: 0.5em;
-}
+    .card p {
+      font-size: 0.9em;
+      margin: 0.3em 0;
+      color: #666;
+    }
 
-footer ul {
-  list-style: none;
-  padding: 0;
-}
+    .card img {
+      width: 100%;
+      max-width: 150px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.8em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-footer a {
-  color: white;
-  text-decoration: none;
-}
+    /* Book Card Specific */
+    .book-card {
+      min-height: 320px;
+    }
 
-footer div {
-  margin: 1em;
-}
+    /* Load More Button */
+    .load-more-btn {
+      margin-top: 2em;
+      padding: 0.8em 2em;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-footer input {
-  padding: 0.5em;
-  border: none;
-  border-radius: 4px;
-  margin-right: 0.5em;
-}
+    .load-more-btn:hover {
+      background: #229954;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+    }
 
-footer button {
-  padding: 0.5em 1em;
-  background: white;
-  color: #27ae60;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+    /* Footer */
+    footer {
+      background: #27ae60;
+      color: white;
+      padding: 3em 2em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
 
-.social {
-  width: 100%;
-  text-align: center;
-  margin-top: 2em;
-}
+    footer h4 { 
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
 
-.social a {
-  margin: 0 0.5em;
-  color: white;
-  font-size: 1.2em;
-}
+    footer ul { 
+      list-style: none; 
+      padding: 0;
+      margin: 0;
+    }
 
-.footer-copy {
-  text-align: center;
-  margin-top: 1em;
-  font-size: 0.9em;
-}
+    footer ul li {
+      margin: 0.5em 0;
+    }
 
+    footer a { 
+      color: white; 
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
 
+    footer a:hover {
+      opacity: 0.8;
+    }
+
+    footer > div { 
+      margin: 1em;
+      flex: 1 1 200px;
+    }
+
+    footer input {
+      padding: 0.5em;
+      border: none;
+      border-radius: 4px;
+      margin-right: 0.5em;
+      width: 200px;
+    }
+
+    footer button {
+      padding: 0.5em 1em;
+      background: white;
+      color: #27ae60;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    footer button:hover {
+      background: #f0f0f0;
+    }
+
+    .social a { 
+      margin: 0 0.5em; 
+      color: white; 
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social a:hover {
+      transform: scale(1.2);
+    }
+
+    /* Footer Stats */
+    .footer-stats {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 2em;
+    }
+
+    .footer-stats h1 {
+      font-size: 1.8em;
+      margin-bottom: 1em;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .stats-container > div {
+      flex: 1;
+      padding: 1.5em;
+      border-right: 1px solid #ddd;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .stats-container > div:last-child {
+      border-right: none;
+    }
+
+    .stats-container > div:hover {
+      background: #f5f5f5;
+    }
+
+    .stats-container h3 {
+      color: #27ae60;
+      font-size: 1.8em;
+      margin: 0 0 0.2em 0;
+    }
+
+    .stats-container p {
+      font-size: 0.9em;
+      margin: 0;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5em;
+      }
+
+      .library-hero h2 {
+        font-size: 1.8em;
+      }
+
+      #searchBar {
+        width: 90%;
+      }
+
+      .stats-container {
+        flex-direction: column;
+      }
+
+      .stats-container > div {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .stats-container > div:last-child {
+        border-bottom: none;
+      }
+
+      footer input {
+        width: 100%;
+        margin: 0.5em 0;
+      }
+
+      footer button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    <h1>Impact Rebirth</h1>
+    <h1 class="logo">Impact Rebirth</h1>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -205,118 +409,206 @@ footer button {
     <div class="hamburger"><span></span><span></span><span></span></div>
   </header>
 
-  <!-- Explore Our Library -->
-  <section style="text-align:center; padding:3em 2em;">
-    <h2 style="font-size:2em; margin-bottom:0.5em;">Explore Our Library</h2>
-    <p style="font-size:1.1em;">Discover thousands of ebooks across all genres. Your next great read awaits.</p>
-    <input id="searchBar" type="text" placeholder="Search books..." 
-           style="margin-top:1em; padding:0.7em; width:80%; max-width:400px; border:1px solid #ccc; border-radius:4px;" />
+  <!-- Library Hero Section -->
+  <section class="library-hero">
+    <h2>Explore Our Library</h2>
+    <p>Discover thousands of ebooks across all genres. Your next great read awaits.</p>
+    <input id="searchBar" type="text" placeholder="🔍 Search books, authors, or genres..." />
   </section>
 
   <!-- Explore by Genre -->
-  <section style="text-align:center;">
-    <h3 style="font-size:1.5em; margin-bottom:1em;">Explore by Genre</h3>
+  <section class="section">
+    <h3>Explore by Genre</h3>
     <div class="card-grid" id="genreGrid">
-      <div class="card selected" data-genre="All"><i class="fas fa-globe"></i><p>All</p></div>
-      <div class="card" data-genre="Fiction"><i class="fas fa-feather-alt"></i><p>Fiction</p></div>
-      <div class="card" data-genre="Non-Fiction"><i class="fas fa-book"></i><p>Non-Fiction</p></div>
-      <div class="card" data-genre="Mystery"><i class="fas fa-user-secret"></i><p>Mystery</p></div>
-      <div class="card" data-genre="Romance"><i class="fas fa-heart"></i><p>Romance</p></div>
-      <div class="card" data-genre="Science Fiction"><i class="fas fa-rocket"></i><p>Science Fiction</p></div>
-      <div class="card" data-genre="Biography"><i class="fas fa-user"></i><p>Biography</p></div>
-      <div class="card" data-genre="Self-Help"><i class="fas fa-lightbulb"></i><p>Self-Help</p></div>
-      <div class="card" data-genre="History"><i class="fas fa-landmark"></i><p>History</p></div>
+      <div class="card selected" data-genre="All">
+        <i class="fas fa-globe"></i>
+        <p><strong>All</strong></p>
+      </div>
+      <div class="card" data-genre="Fiction">
+        <i class="fas fa-feather-alt"></i>
+        <p><strong>Fiction</strong></p>
+      </div>
+      <div class="card" data-genre="Non-Fiction">
+        <i class="fas fa-book"></i>
+        <p><strong>Non-Fiction</strong></p>
+      </div>
+      <div class="card" data-genre="Mystery">
+        <i class="fas fa-user-secret"></i>
+        <p><strong>Mystery</strong></p>
+      </div>
+      <div class="card" data-genre="Romance">
+        <i class="fas fa-heart"></i>
+        <p><strong>Romance</strong></p>
+      </div>
+      <div class="card" data-genre="Science Fiction">
+        <i class="fas fa-rocket"></i>
+        <p><strong>Sci-Fi</strong></p>
+      </div>
+      <div class="card" data-genre="Biography">
+        <i class="fas fa-user"></i>
+        <p><strong>Biography</strong></p>
+      </div>
+      <div class="card" data-genre="Self-Help">
+        <i class="fas fa-lightbulb"></i>
+        <p><strong>Self-Help</strong></p>
+      </div>
+      <div class="card" data-genre="History">
+        <i class="fas fa-landmark"></i>
+        <p><strong>History</strong></p>
+      </div>
     </div>
   </section>
 
   <!-- Popular Picks -->
-  <section style="text-align:center;">
-    <h3 style="font-size:1.5em; margin-bottom:1em;">Popular Picks</h3>
+  <section class="section" style="background: #f9f9f9;">
+    <h3>Popular Picks</h3>
     <div class="card-grid" id="bookGrid">
-      <div class="card" data-genre="Fiction">
-        <img src="images/midnight-library.jpg" alt="The Midnight Library" />
+      <div class="card book-card" data-genre="Fiction">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg94zRTcNOsNVGgb_dSHJQINfMMHn2lsZ4mw&s" alt="The Midnight Library" />
         <h4>The Midnight Library</h4>
         <p>Matt Haig</p>
-        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.8 (2340 reviews)</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.8 (2,340 reviews)</p>
       </div>
-      <div class="card" data-genre="Non-Fiction">
-        <img src="images/atomic-habits.jpg" alt="Atomic Habits" />
+      <div class="card book-card" data-genre="Non-Fiction">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FQk_SzsEpthTOwnx_R9tM348IXFH0jvccw&s" alt="Atomic Habits" />
         <h4>Atomic Habits</h4>
         <p>James Clear</p>
-        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.9 (5670 reviews)</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.9 (5,670 reviews)</p>
       </div>
-      <div class="card" data-genre="Mystery">
-        <img src="images/silent-patient.jpg" alt="The Silent Patient" />
+      <div class="card book-card" data-genre="Mystery">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd34WheocuQmi2mkx0_50dmd3Eg6YShTuLYQ&s" alt="The Silent Patient" />
         <h4>The Silent Patient</h4>
         <p>Alex Michaelides</p>
-        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.7 (3210 reviews)</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.7 (3,210 reviews)</p>
       </div>
-      <div class="card" data-genre="Romance">
-        <img src="images/beach-read.jpg" alt="Beach Read" />
+      <div class="card book-card" data-genre="Romance">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwKlcNLyHUgTwW3pkt9CqjWRtKK84i8Y7jyw&s" alt="Beach Read" />
         <h4>Beach Read</h4>
         <p>Emily Henry</p>
-        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.6 (1890 reviews)</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.6 (1,890 reviews)</p>
+      </div>
+      <div class="card book-card" data-genre="Science Fiction">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd34WheocuQmi2mkx0_50dmd3Eg6YShTuLYQ&s" alt="Project Hail Mary" />
+        <h4>Project Hail Mary</h4>
+        <p>Andy Weir</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.8 (4,120 reviews)</p>
+      </div>
+      <div class="card book-card" data-genre="Biography">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1724dV6HARfCCQTSp4luZ3mOWu67olv_vRQ&s" alt="Becoming" />
+        <h4>Becoming</h4>
+        <p>Michelle Obama</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.9 (6,540 reviews)</p>
+      </div>
+      <div class="card book-card" data-genre="Self-Help">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FQk_SzsEpthTOwnx_R9tM348IXFH0jvccw&s" alt="The Power of Now" />
+        <h4>The Power of Now</h4>
+        <p>Eckhart Tolle</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.7 (3,890 reviews)</p>
+      </div>
+      <div class="card book-card" data-genre="History">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg94zRTcNOsNVGgb_dSHJQINfMMHn2lsZ4mw&s" alt="Sapiens" />
+        <h4>Sapiens</h4>
+        <p>Yuval Noah Harari</p>
+        <p><i class="fas fa-star" style="color:#f1c40f;"></i> 4.8 (5,230 reviews)</p>
       </div>
     </div>
     <div style="margin-top:2em;">
-      <button style="padding:0.7em 1.5em; background:#27ae60; color:white; border:none; border-radius:4px; font-size:1em; cursor:pointer;">
+      <button class="load-more-btn" onclick="alert('Loading more books...')">
         Load More Books
       </button>
     </div>
   </section>
 
- <!-- Footer -->
-<footer>
-   <section class="hero">
-  <h1>Impact Rebirth</h1>
-  </section>
-
-  <div style="flex:1 1 150px; text-align:center;">
-    <h4>Explore</h4>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="library.html">Library</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="donation.html">Donation</a></li>
-    </ul>
-  </div>
-
-  <div style="flex:1 1 150px; text-align:center;">
-    <h4>Support</h4>
-    <ul>
-      <li><a href="#">Help Center</a></li>
-      <li><a href="#">Contact Us</a></li>
-      <li><a href="#">FAQs</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-    </ul>
-  </div>
-
-  <div style="flex:1 1 250px; text-align:center;">
-    <h4>Stay Connected</h4>
-    <p>Get the latest updates delivered to your inbox.</p>
-    <form action="#" method="post" style="margin-top:0.5em;">
-      <input type="email" placeholder="Enter your email" required
-        style="padding:0.5em; border:none; border-radius:4px; margin-right:0.5em;" />
-      <button type="submit"
-        style="padding:0.5em 1em; background:white; color:#27ae60; border:none; border-radius:4px; cursor:pointer;">
-        Subscribe Now
-      </button>
-    </form>
-  </div>
-
-  <div style="width:100%; text-align:center; margin-top:2em;">
-    <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
-      <a href="#"><i class="fab fa-facebook-f" style="color:white; font-size:1.2em;"></i></a>
-      <a href="#"><i class="fab fa-twitter" style="color:white; font-size:1.2em;"></i></a>
-      <a href="#"><i class="fab fa-instagram" style="color:white; font-size:1.2em;"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in" style="color:white; font-size:1.2em;"></i></a>
+  <!-- Footer -->
+  <footer>
+    <!-- Stats Section in Footer -->
+    <div class="footer-stats">
+      <h1>Impact Rebirth</h1>
+      <div class="stats-container">
+        <div>
+          <h3>100K+</h3>
+          <p>Books Reviewed</p>
+        </div>
+        <div>
+          <h3>5.0M+</h3>
+          <p>Reviews Shared</p>
+        </div>
+        <div>
+          <h3>4.8/5</h3>
+          <p>Avg. Rating</p>
+        </div>
+      </div>
     </div>
-    <p style="font-size:0.9em;">&copy; 2025 Impact Rebirth. Happy Reading!</p>
-  </div>
-</footer>
 
-  <!-- Filtering + Mobile Nav Script -->
+    <!-- Footer Links -->
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="library.html">Library</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="donation.html">Donation</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 150px; text-align:center;">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <div style="flex:1 1 250px; text-align:center;">
+      <h4>Stay Connected</h4>
+      <p>Get the latest updates delivered to your inbox.</p>
+      <form action="#" method="post" style="margin-top:0.5em;">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe Now</button>
+      </form>
+    </div>
+
+    <!-- Social Media & Copyright -->
+    <div style="width:100%; text-align:center; margin-top:2em;">
+      <div style="display:flex; justify-content:center; gap:1em; margin-bottom:1em;">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p style="font-size:0.9em;">&copy; 2025 Impact Rebirth. Happy Reading!</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+
+    // Hamburger toggle
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove('show');
+      }
+    });
+
+    // Set active page based on current URL
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
     // Genre filtering
     const genreCards = document.querySelectorAll('#genreGrid .card');
     const bookCards = document.querySelectorAll('#bookGrid .card');
@@ -332,25 +624,74 @@ footer button {
       });
     });
 
-    searchBar.addEventListener('keyup', filterBooks);
+    searchBar.addEventListener('input', filterBooks);
 
     function filterBooks() {
-      const query = searchBar.value.toLowerCase();
+      const query = searchBar.value.toLowerCase().trim();
+      let visibleCount = 0;
+
       bookCards.forEach(book => {
         const matchesGenre = (activeGenre === "All" || book.getAttribute('data-genre') === activeGenre);
-        const matchesSearch = book.innerText.toLowerCase().includes(query);
-        book.style.display = (matchesGenre && matchesSearch) ? "flex" : "none";
+        const bookText = book.innerText.toLowerCase();
+        const matchesSearch = query === '' || bookText.includes(query);
+        
+        if (matchesGenre && matchesSearch) {
+          book.style.display = "flex";
+          visibleCount++;
+        } else {
+          book.style.display = "none";
+        }
       });
+
+      // Show message if no books found
+      const bookGridSection = document.getElementById('bookGrid').parentElement;
+      let noResultsMsg = document.getElementById('noResultsMsg');
+      
+      if (visibleCount === 0) {
+        if (!noResultsMsg) {
+          noResultsMsg = document.createElement('p');
+          noResultsMsg.id = 'noResultsMsg';
+          noResultsMsg.style.cssText = 'text-align:center; color:#666; font-size:1.1em; margin:2em 0;';
+          noResultsMsg.innerHTML = '<i class="fas fa-book-open" style="font-size:3em; color:#27ae60; display:block; margin-bottom:0.5em;"></i>No books found. Try a different search or genre.';
+          document.getElementById('bookGrid').parentElement.insertBefore(noResultsMsg, document.getElementById('bookGrid').nextSibling);
+        }
+        noResultsMsg.style.display = 'block';
+      } else {
+        if (noResultsMsg) {
+          noResultsMsg.style.display = 'none';
+        }
+      }
     }
 
-    // Mobile nav toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('header nav ul');
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
+    // Add smooth scroll to top when clicking logo
+    document.querySelector('.logo').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Add animation when cards come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply fade-in animation to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
     });
   </script>
 
 </body>
 </html>
-
